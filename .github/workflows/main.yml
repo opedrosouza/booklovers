@@ -73,7 +73,7 @@ jobs:
           bin/rails db:create db:migrate
           bundle exec rspec
   Deploy:
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     needs: Test
     runs-on: ubuntu-latest
 
