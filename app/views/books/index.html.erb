@@ -1,0 +1,17 @@
+<section class="books my-5">
+  <div class="container">
+    <div class="row d-flex">
+      <% @books.each do |book| %>
+        <div class="col-12 col-md-4 col-lg-3 d-flex mb-2">
+          <div class="card p-4 shadow-sm">
+            <%= link_to book_path(book) do %>
+              <h3 class="text-dark"><%= book.title %></h3>
+            <% end %>
+            <p><%= book.description %></p>
+            <p style="justify-self: flex-end;"><strong><%= book.author_name %></strong></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>  
+</section>
