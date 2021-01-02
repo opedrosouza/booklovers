@@ -71,7 +71,7 @@ jobs:
           DATABASE_PASSWORD: password
         run: |
           bin/rails db:create db:migrate
-          bin/rails rspec
+          bundle exec rspec
   Deploy:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
     needs: Test
