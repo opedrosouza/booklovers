@@ -1,5 +1,24 @@
 <section class="books my-5">
   <div class="container">
+    <div class="row d-flex justify-content-center align-items-center mb-4">
+      <div class="col-10">
+        <%= search_form_for @books_query, class: 'inline-form' do |f| %>
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="sort-form col-2">
+            <%= sort_link(@books_query, :title, default_order: :desc) do %>
+              <strong class="text-dark">Título</strong>
+            <% end %>
+          </div>
+          <div class="input-group col-10">
+            <%= f.search_field :title_or_description_or_author_name_cont, class: 'form-control' %>
+            <div class="input-group-append">
+              <%= f.submit 'Buscar', class: "btn btn-outline-secondary" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
     <div class="row d-flex">
       <% @books.each do |book| %>
         <div class="col-12 col-md-4 col-lg-3 d-flex mb-2">

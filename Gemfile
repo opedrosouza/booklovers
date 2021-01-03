@@ -23,6 +23,8 @@ gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'view_component', '~> 2.22', '>= 2.22.1', require: 'view_component/engine'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+# Ransack is the successor to the MetaSearch gem. It improves and expands upon MetaSearch's functionality, but does not have a 100%-compatible API.
+gem 'ransack', '~> 2.4', '>= 2.4.1'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 

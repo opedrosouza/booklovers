@@ -2,7 +2,8 @@ class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
 
   def index
-    @books = Book.all
+    @books_query = Book.ransack(params[:search])
+    @books = @books_query.result(distinct: true)
   end
 
   def show; end

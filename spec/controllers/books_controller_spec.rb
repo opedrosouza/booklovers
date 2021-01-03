@@ -10,6 +10,13 @@ RSpec.describe BooksController, type: :controller do
       get :index
       expect(response).to render_template("index")
     end
+    it 'test the ransack search' do
+      10.times.each do |i|
+        create(:book, title: "Testing Book #{i}")
+      end
+      get :index, params: { search: { title_or_description_or_author_name_cont: '2' }}
+      expect(response.status).to eq(200)
+    end
   end
 
   describe "GET show" do
