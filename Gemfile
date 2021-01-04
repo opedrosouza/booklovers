@@ -25,6 +25,8 @@ gem 'view_component', '~> 2.22', '>= 2.22.1', require: 'view_component/engine'
 gem 'bootsnap', '>= 1.4.2', require: false
 # Ransack is the successor to the MetaSearch gem. It improves and expands upon MetaSearch's functionality, but does not have a 100%-compatible API.
 gem 'ransack', '~> 2.4', '>= 2.4.1'
+# Official AWS Ruby gem for Amazon Simple Storage Service (Amazon S3). This gem is part of the AWS SDK for Ruby.
+gem 'aws-sdk-s3', '~> 1.87', require: false
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 

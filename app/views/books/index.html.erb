@@ -21,13 +21,24 @@
     </div>
     <div class="row d-flex">
       <% @books.each do |book| %>
-        <div class="col-12 col-md-4 col-lg-3 d-flex mb-2">
-          <div class="card p-4 shadow-sm">
-            <%= link_to book_path(book) do %>
-              <h3 class="text-dark"><%= book.title %></h3>
-            <% end %>
-            <p><%= book.description %></p>
-            <p style="justify-self: flex-end;"><strong><%= book.author_name %></strong></p>
+        <div class="col-12 col-md-4 mb-2">
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <%= link_to book_path(book) do %>
+                  <%= image_tag book.set_cover, class: 'card-img-top' %>
+                <% end %>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <%= link_to book_path(book) do %>
+                    <h5 class="text-dark card-title"><%= book.title %></h5>
+                  <% end %>
+                  <p class="card-text"><%= book.description.first(40) %>...</p>
+                  <p class="card-text"><small class="text-muted"><%= book.author_name %></small></p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       <% end %>
