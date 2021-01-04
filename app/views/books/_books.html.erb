@@ -1,0 +1,43 @@
+<div class="row d-flex justify-content-center align-items-center mb-4">
+  <div class="col-10">
+    <%= search_form_for @books_query, remote: true, class: 'inline-form' do |f| %>
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="sort-form col-2">
+        <%= sort_link(@books_query, :title, {}, { :remote => true, :method => :get } ) do %>
+          <strong class="text-dark">Título</strong>
+        <% end %>
+      </div>
+      <div class="input-group col-10">
+        <%= f.search_field :title_or_description_or_author_name_cont, class: 'form-control' %>
+        <div class="input-group-append">
+          <%= f.submit 'Buscar', class: "btn btn-outline-secondary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
+<div class="row">
+  <% @books.each do |book| %>
+    <div class="col-12 col-md-6 col-lg-4 mb-2">
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <%= link_to book_path(book) do %>
+              <%= image_tag book.set_cover, class: 'card-img-top' %>
+            <% end %>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <%= link_to book_path(book) do %>
+                <h5 class="text-dark card-title"><%= book.title %></h5>
+              <% end %>
+              <p class="card-text"><%= book.description.first(40) %>...</p>
+              <p class="card-text"><small class="text-muted"><%= book.author_name %></small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
