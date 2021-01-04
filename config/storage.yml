@@ -8,7 +8,7 @@ local:
 
 digitalocean:
   service: S3
-  endpoint: https://thebooklovers.nyc3.digitaloceanspaces.com
+  endpoint: https://nyc3.digitaloceanspaces.com
   access_key_id: <%= ENV['S3_KEY'] %>
   secret_access_key: <%= ENV['S3_SECRET'] %>
   bucket: thebooklovers
