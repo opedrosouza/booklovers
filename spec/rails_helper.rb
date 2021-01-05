@@ -9,7 +9,11 @@ require 'capybara/rspec'
 require 'database_cleaner'
 require "view_component/test_helpers"
 require 'simplecov'
+require 'devise'
+require_relative 'support/controller_macros'
 SimpleCov.start
+
+include ActionDispatch::TestProcess
 # Add additional requires below this line. Rails is not loaded until this point!
 DatabaseCleaner.allow_remote_database_url = true
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -51,10 +55,12 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   config.fixture_path = "#{::Rails.root}/spec/factories"
-
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
   config.include Devise::Test::IntegrationHelpers
   config.include Warden::Test::Helpers
   config.include ViewComponent::TestHelpers, type: :component
+  config.extend ControllerMacros, :type => :controller
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
