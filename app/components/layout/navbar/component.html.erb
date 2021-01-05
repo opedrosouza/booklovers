@@ -21,7 +21,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to 'Editar Conta', edit_admin_registration_path, class: 'dropdown-item' %>
               <div class="dropdown-divider"></div>
-              <%= link_to 'Entrar', destroy_admin_session_path, method: :delete, class: 'dropdown-item text-danger' %>
+              <%= link_to 'Sair', destroy_admin_session_path, method: :delete, class: 'dropdown-item text-danger font-weight-bold' %>
             </div>
           </li>
         <% else %>
