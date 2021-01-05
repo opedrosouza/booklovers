@@ -1,4 +1,4 @@
-<%= form_with model: @book, multipart: true do |f| %>
+<%= form_with model: @book, multipart: true, local: true, remote: false do |f| %>
   <div class="form-group">
     <%= f.label :title, 'Título' %>
     <%= f.text_field :title, placeholder: 'Ex: Game of Thrones', class: 'form-control' %>
@@ -12,8 +12,15 @@
     <%= f.text_field :author_name, placeholder: 'Ex: Stephen King', class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :cover, 'Capa do livro' %>
-    <%= f.file_field :cover, class: 'form-control' %>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroupFileAddon01">Capa do livro</span>
+      </div>
+      <div class="custom-file">
+        <%= f.file_field :cover, class: 'custom-file-input', id: 'inputGroupFile01' %>
+        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+      </div>
+    </div>    
   </div>
   <div class="form-group">
     <%= f.submit "Salvar", class: 'btn btn-block btn-success shadow' %>

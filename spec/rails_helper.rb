@@ -61,6 +61,8 @@ RSpec.configure do |config|
   config.include Warden::Test::Helpers
   config.include ViewComponent::TestHelpers, type: :component
   config.extend ControllerMacros, :type => :controller
+  config.extend ControllerMacros, :type => :view
+  config.extend ControllerMacros, :type => :feature
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
