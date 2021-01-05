@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     controllers: {
       sessions: 'admins/sessions',
       registrations: 'admins/registrations',
+      passwords: 'admins/passwords'
     }
 
   resources :books
