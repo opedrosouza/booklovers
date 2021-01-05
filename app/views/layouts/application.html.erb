@@ -10,7 +10,7 @@
   </head>
 
   <body>
-  <%= render Layout::Navbar::Component.new %>
+  <%= render Layout::Navbar::Component.new(user: current_admin) %>
     <%- if alert %>
       <p><%= alert %></p>
     <%- elsif notice %>

@@ -6,6 +6,12 @@ RSpec.describe Book, type: :model do
     expect(book).to be_valid
   end
 
+  it 'upload a book cover' do
+    book = create(:book)
+    book.cover = fixture_file_upload 'spec/fixtures/cleancode.jpg', 'image/jpg'
+    expect(book.cover.attached?).to be true
+  end
+
   context 'Validations' do  
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:description) }

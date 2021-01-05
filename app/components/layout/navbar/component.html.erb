@@ -10,25 +10,28 @@
         <li class="nav-item active">
           <%= link_to 'Home', root_path, class: 'nav-link' %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Livros', books_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Novo Livro', new_book_path, class: 'nav-link' %>
-        </li>
-        <!--
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        -->
+        <% unless @user.nil? %>
+          <li class="nav-item">
+            <%= link_to 'Novo Livro', new_book_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= @user['email'].split('@').first.camelize %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to 'Editar Conta', edit_admin_registration_path, class: 'dropdown-item' %>
+              <div class="dropdown-divider"></div>
+              <%= link_to 'Entrar', destroy_admin_session_path, method: :delete, class: 'dropdown-item text-danger' %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Entrar', new_admin_session_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Cadastrar', new_admin_registration_path, class: 'nav-link' %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
