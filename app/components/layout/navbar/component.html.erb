@@ -15,26 +15,29 @@
         <li class="nav-item active">
           <%= link_to 'Home', root_path, class: 'nav-link' %>
         </li>
-        <% unless @user.nil? %>
-          <li class="nav-item">
-            <%= link_to 'Novo Livro', new_book_path, class: 'nav-link' %>
-          </li>
+        <% unless @member.nil? %>
+          <% if is_admin? %>
+            <li class="nav-item">
+              <%= link_to 'Novo Livro', new_book_path, class: 'nav-link' %>
+            </li>
+          <% end %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= @user['email'].split('@').first.camelize %>
+              <%= image_tag(is_admin? ? 'user-avatar.png' : @member.set_avatar, width: 16, height: 16, class: 'img-fluid') %>
+              <%= is_admin? ? @member['email'].split('@').first : @member.name %>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to 'Editar Conta', edit_admin_registration_path, class: 'dropdown-item' %>
+              <%= link_to 'Editar Conta', (is_admin? ? edit_admin_registration_path : edit_user_registration_path), class: 'dropdown-item' %>
               <div class="dropdown-divider"></div>
-              <%= link_to 'Sair', destroy_admin_session_path, method: :delete, class: 'dropdown-item text-danger font-weight-bold' %>
+              <%= link_to 'Sair', (is_admin? ? destroy_admin_session_path : destroy_user_session_path), method: :delete, class: 'dropdown-item text-danger font-weight-bold' %>
             </div>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to 'Entrar', new_admin_session_path, class: 'nav-link' %>
+            <%= link_to 'Entrar', new_user_session_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Cadastrar', new_admin_registration_path, class: 'nav-link' %>
+            <%= link_to 'Cadastrar', new_user_registration_path, class: 'nav-link' %>
           </li>
         <% end %>
       </ul>
