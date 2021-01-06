@@ -1,20 +1,31 @@
 Rails.application.routes.draw do
-  devise_for :users
   devise_for :admins, 
-    path: 'auth', 
+    path: 'admin', 
     path_names: { 
-      sign_in: 'login', 
-      sign_out: 'logout', 
-      password: 'secret', 
-      confirmation: 'verification', 
-      unlock: 'unblock', 
-      registration: 'register', 
-      sign_up: 'cmon_let_me_in' 
+      sign_in: 'entrar', 
+      sign_out: 'sair', 
+      password: 'senha',
+      registration: 'cadastro', 
+      sign_up: 'cadastrar' 
     },
     controllers: {
       sessions: 'admins/sessions',
       registrations: 'admins/registrations',
       passwords: 'admins/passwords'
+    }
+  devise_for :users, 
+    path: '/', 
+    path_names: { 
+      sign_in: 'entrar', 
+      sign_out: 'sair', 
+      password: 'senha',
+      registration: 'cadastro', 
+      sign_up: 'cadastrar' 
+    },
+    controllers: {
+      sessions: 'users/sessions',
+      registrations: 'users/registrations',
+      passwords: 'users/passwords'
     }
 
   resources :books

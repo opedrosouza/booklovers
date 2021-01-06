@@ -1,0 +1,38 @@
+<section class="auth my-5">
+  <div class="container">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="card shadow">
+          <div class="card-body">
+            <h5 class="card-title mb-4 text-center">Entre em sua conta</h5>
+            <%= form_for(resource, as: resource_name, url: admin_session_path) do |f| %>
+              <div class="form-group">
+                <%= f.label :email %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Ex. pedro@mail.com', class: 'form-control' %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :password %>
+                <%= f.password_field :password, autocomplete: "current-password", placeholder: '******', class: 'form-control' %>
+              </div>
+
+              <% if devise_mapping.rememberable? %>
+                <div class="form-group">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
+                </div>
+              <% end %>
+
+              <div class="form-group">
+                <%= f.submit "Entrar", class: 'btn btn-block btn-success' %>
+              </div>
+            <% end %>
+          </div>
+          <div class="card-footer">
+            <%= render "users/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
