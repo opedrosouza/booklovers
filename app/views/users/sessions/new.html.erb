@@ -5,7 +5,7 @@
         <div class="card shadow">
           <div class="card-body">
             <h5 class="card-title mb-4 text-center">Entre em sua conta</h5>
-            <%= form_for(resource, as: resource_name, url: admin_session_path) do |f| %>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="form-group">
                 <%= f.label :email %>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Ex. pedro@mail.com', class: 'form-control' %>

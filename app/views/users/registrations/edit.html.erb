@@ -9,6 +9,11 @@
               <%= render "admins/shared/error_messages", resource: resource %>
 
               <div class="form-group">
+                <%= f.label :name %>
+                <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: 'Ex. pedro', class: 'form-control' %>
+              </div>
+
+              <div class="form-group">
                 <%= f.label :email %>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Ex. newemail@mail.com', class: 'form-control' %>
               </div>

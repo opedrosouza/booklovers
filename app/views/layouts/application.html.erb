@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <%= render Layout::Navbar::Component.new(user: current_admin) %>
+    <%= render Layout::Navbar::Component.new(member: current_member) %>
     <%= render Utils::Alert::Component.new(message: notice, type: 'success') %>
     <%= render Utils::Alert::Component.new(message: alert, type: 'warning') %>
     <main>
