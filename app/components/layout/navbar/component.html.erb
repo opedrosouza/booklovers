@@ -23,6 +23,7 @@
           <% end %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= image_tag(is_admin? ? 'user-avatar.png' : @member.set_avatar, width: 16, height: 16, class: 'img-fluid') %>
               <%= is_admin? ? @member['email'].split('@').first : @member.name %>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">

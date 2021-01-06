@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-  has_one_attached :cover
+  has_one_attached :cover, dependent: :destroy
   validates :title, :description, :author_name, presence: true
 
   def set_cover
