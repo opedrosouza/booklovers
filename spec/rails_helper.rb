@@ -12,9 +12,11 @@ require 'simplecov'
 require 'devise'
 require_relative 'support/controller_macros'
 require_relative 'support/feature_helpers'
+require_relative 'support/capybara'
 SimpleCov.start
 
 include ActionDispatch::TestProcess
+ap Capybara.current_driver
 # Add additional requires below this line. Rails is not loaded until this point!
 DatabaseCleaner.allow_remote_database_url = true
 # Requires supporting ruby files with custom matchers and macros, etc, in
