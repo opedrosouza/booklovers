@@ -14,6 +14,20 @@ RSpec.describe CategoriesController, type: :controller do
       end
     end
 
+    describe "GET show" do
+      before(:each) do
+        @category = create(:category)
+      end
+      it "has a 200 status code" do
+        get :show, params: { id: @category.id }
+        expect(response.status).to eq(200)
+      end
+      it "renders the 'show' template" do
+        get :show, params: { id: @category.id }
+        expect(response).to render_template("show")
+      end
+    end
+
     describe "GET new" do
       it "has a 200 status code" do
         get :new
@@ -72,6 +86,22 @@ RSpec.describe CategoriesController, type: :controller do
         category = create(:category)
         delete :destroy, params: { id: category.id }
         expect(response).to redirect_to(categories_path)
+      end
+    end
+  end
+  
+  context 'As guest user' do
+    describe "GET show" do
+      before(:each) do
+        @category = create(:category)
+      end
+      it "has a 200 status code" do
+        get :show, params: { id: @category.id }
+        expect(response.status).to eq(200)
+      end
+      it "renders the 'show' template" do
+        get :show, params: { id: @category.id }
+        expect(response).to render_template("show")
       end
     end
   end

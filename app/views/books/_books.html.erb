@@ -20,31 +20,38 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <% if @books.count > 0 %>
-    <% @books.each do |book| %>
-      <div class="col-12 col-md-6 col-lg-4 mb-2">
-        <div class="card mb-3" style="max-width: 540px;">
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <%= link_to book_path(book) do %>
-                <%= image_tag book.set_cover, class: 'card-img-top' %>
-              <% end %>
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <%= link_to book_path(book) do %>
-                  <h5 class="text-dark card-title"><%= book.title %></h5>
-                <% end %>
-                <p class="card-text"><%= book.description.first(40) %>...</p>
-                <p class="card-text"><small class="text-muted"><%= book.author_name %></small></p>
+<% if @categories.count > 0%>
+  <% @categories.each do |category| %>
+    <div class="splide">
+      <h4><%= link_to category[:title], category_path(category[:title]), class: 'text-dark' %></h4>
+	    <div class="splide__track">
+        <div class="row splide__list">
+          <% if category[:books].count > 0 %>
+            <% category[:books].each do |book| %>
+              <div class="splide__slide">
+                <div class="card mb-3" style="max-width: 540px;">
+                  <div class="row no-gutters">
+                    <div class="col-md-4">
+                      <%= link_to book_path(book) do %>
+                        <%= image_tag book.set_cover, class: 'card-img-top' %>
+                      <% end %>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <%= link_to book_path(book) do %>
+                          <h5 class="text-dark card-title"><%= book.title %></h5>
+                        <% end %>
+                        <p class="card-text"><%= book.description.first(40) %>...</p>
+                        <p class="card-text"><small class="text-muted"><%= book.author_name %></small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
-    <% end %>
-  <% else %>
-    <h3>Nenhum livro foi encontrado :(</h3>
+    </div>
   <% end %>
-</div>
+<% end %>

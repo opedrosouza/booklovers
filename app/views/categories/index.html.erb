@@ -27,6 +27,7 @@
                   <td><%= category.title %></td>
                   <td><%= category.description.first(20)... %></td>
                   <td>
+                    <%= link_to 'Visualizar', category_path(category), class: 'btn btn-primary btn-sm' %>
                     <%= link_to 'Editar', edit_category_path(category), class: 'btn btn-info btn-sm' %>
                     <%= link_to 'Remover', category_path(category), method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger btn-sm' %>
                   </td>

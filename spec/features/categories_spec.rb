@@ -9,6 +9,11 @@ RSpec.feature "Categories Feature Tests", type: :feature do
       visit categories_path
       expect(page).to have_text('Categorias') 
     end
+    it 'Visit categories show' do
+      category = create(:category)
+      visit category_path(category)
+      expect(page).to have_text("Livros da categoria: #{category.title}") 
+    end
     it 'visit the new page and create a new category' do
       visit new_category_path
       fill_in 'Título',	with: 'Category test' 
@@ -27,7 +32,7 @@ RSpec.feature "Categories Feature Tests", type: :feature do
     it 'visit the index page and delete a category' do
       category = create(:category)
       visit categories_path
-      find(:css, "a[href='#{category_path(category.id)}']").click
+      find(:css, "a[href='#{category_path(category.id)}'][data-method='delete']").click
       expect(page).to have_text('Categoria removida com sucesso.') 
     end
   end
