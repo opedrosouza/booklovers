@@ -18,7 +18,7 @@ RSpec.feature "Comments Feature Tests", js: true, type: :feature do
       comment = create(:comment, member: @user, book: book)
 
       visit book_path(book.id)
-      find(:css, "a[href='#{comment_path({ id: comment.id, book_id: book.id })}']").click
+      find(:css, "a[href='#{comment_path({ id: comment.id, book_id: book.id })}'][data-method='delete']").click
       accept_alert
       expect(page).to have_text('Comentário removido com sucesso.') 
     end
