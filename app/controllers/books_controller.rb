@@ -18,7 +18,8 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to books_path, notice: 'Livro cadastrado com sucesso.'
     else
-      render :new, alert: @book.errors.full_messages
+      flash.now[:alert] = @book.errors.full_messages
+      render :new
     end
   end
 
@@ -28,7 +29,8 @@ class BooksController < ApplicationController
     if @book.update book_params
       redirect_to book_path(@book), notice: 'Livro atualizado com sucesso.'
     else
-      render :edit, alert: @book.errors.full_messages
+      flash.now[:alert] = @book.errors.full_messages
+      render :edit
     end
   end
 

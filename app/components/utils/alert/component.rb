@@ -10,7 +10,7 @@ class Utils::Alert::Component < ViewComponent::Base
     if type == 'success'
       'alert-success'
     elsif type == 'alert'
-      'alert-warning'
+      'alert-danger'
     elsif type == 'error'
       'alert-danger'
     end

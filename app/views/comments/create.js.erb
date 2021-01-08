@@ -1,0 +1,3 @@
+document.querySelector('.navbar').insertAdjacentHTML('afterend', "<%= j render Utils::Alert::Component.new(message: notice, type: 'success') %>")
+document.querySelector('.navbar').insertAdjacentHTML('afterend', "<%= j render Utils::Alert::Component.new(message: alert, type: 'error') %>")
+document.querySelector('#book-comments').innerHTML = ("<%= j render partial: 'books/comments' %>");

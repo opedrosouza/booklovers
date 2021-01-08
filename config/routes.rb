@@ -29,6 +29,9 @@ Rails.application.routes.draw do
     }
 
   resources :books
+  resources :comments, only: %i[create destroy]
+
   root to: 'books#index'
+
   get '/landing', to: 'landing_page#index'
 end

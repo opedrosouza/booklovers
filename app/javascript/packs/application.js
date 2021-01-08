@@ -3,4 +3,6 @@ require('turbolinks').start()
 require('@rails/activestorage').start()
 require('channels')
 import 'bootstrap'
-import "controllers"
+import 'controllers'
+require('trix')
+require('@rails/actiontext')

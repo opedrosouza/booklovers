@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar, dependent: :destroy
+  has_many :comments, as: :member, dependent: :destroy
+
   validates :name, presence: true
 
   def set_avatar
