@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_08_022403) do
+ActiveRecord::Schema.define(version: 2021_01_08_214251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,16 @@ ActiveRecord::Schema.define(version: 2021_01_08_022403) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "book_of_users", force: :cascade do |t|
+    t.integer "status"
+    t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_book_of_users_on_book_id"
+    t.index ["user_id"], name: "index_book_of_users_on_user_id"
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -100,6 +110,8 @@ ActiveRecord::Schema.define(version: 2021_01_08_022403) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "book_of_users", "books"
+  add_foreign_key "book_of_users", "users"
   add_foreign_key "books", "categories"
   add_foreign_key "comments", "books"
 end
