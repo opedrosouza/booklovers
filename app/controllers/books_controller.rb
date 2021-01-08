@@ -5,8 +5,14 @@ class BooksController < ApplicationController
 
   def index
     @books_query = Book.ransack(params[:search])
-    @books = @books_query.result(distinct: true)
-    @categories = Category.all.select { |category| category.books.count > 0 }
+    books = @books_query.result(distinct: true)
+    @categories = Category.all.select { |category| category.books.count > 0 }.map do |category|
+      {
+        id: category.id,
+        title: category.title,
+        books: books.where(category_id: category.id).limit(6).order(created_at: :desc)
+      }
+    end
   end
 
   def show; end

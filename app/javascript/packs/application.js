@@ -4,6 +4,5 @@ require('@rails/activestorage').start()
 require('channels')
 require('trix')
 require('@rails/actiontext')
-import '@splidejs/splide'
 import 'bootstrap'
 import 'controllers'
