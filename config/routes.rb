@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   resources :books
   resources :comments, only: %i[create destroy]
+  resources :categories, except: %i[show]
 
   root to: 'books#index'
 

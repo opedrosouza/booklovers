@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
   before_action :authenticate_admin!, except: %i[index show]
+  before_action :set_categories, only: %i[new edit]
 
   def index
     @books_query = Book.ransack(params[:search])
@@ -45,6 +46,10 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :description, :author_name, :cover)
+    params.require(:book).permit(:title, :description, :author_name, :cover, :category_id)
+  end
+
+  def set_categories
+    @categories = Category.all.map { |category| [category.title, category.id] }
   end
 end

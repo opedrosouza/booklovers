@@ -1,0 +1,13 @@
+<%= form_with model: @category do |f| %>
+  <div class="form-group">
+    <%= f.label :title, 'Título' %>
+    <%= f.text_field :title, placeholder: 'Ex: Tecnologia', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, 'Descricão' %>
+    <%= f.text_area :description, placeholder: 'Descricão', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Salvar", class: 'btn btn-block btn-success shadow' %>
+  </div>
+<% end %>
