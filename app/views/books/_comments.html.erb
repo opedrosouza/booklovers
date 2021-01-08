@@ -1,0 +1,26 @@
+<%= form_with url: comments_path, method: :post, remote: true, class: 'mb-5' do |f| %>
+  <%= f.hidden_field :book_id, value: @book.id %>
+  <%= f.label 'comment_content', 'Adicione um comentário' %>
+  <%= f.rich_text_area 'comment[content]', id: 'comment_content' %>
+  <%= f.submit 'Comentar', class: 'btn btn-success mt-2' %>
+<% end %>
+<% @book.comments&.each do |comment| %>
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <div class="mb-2">
+          <%= image_tag((comment.member_type == 'Admin' ? 'user-avatar.png' : comment.member.set_avatar), widht: 20, height: 20) %>
+            <strong><%= (comment.member_type == 'Admin' ? comment.member.email.split('@').first : comment.member.name) %></strong>
+          </div>
+          <%= comment.content %>
+        </div>
+        <% if comment.member == current_member %>
+          <div class="card-footer">
+            <%= link_to 'Remover comentário', comment_path({ id: comment.id, book_id: @book.id }), method: :delete, remote: true, data: { confirm: 'Tem certeza? ' }, class: 'btn btn-danger btn-sm' if comment.valid? %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

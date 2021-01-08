@@ -11,6 +11,7 @@ require "view_component/test_helpers"
 require 'simplecov'
 require 'devise'
 require_relative 'support/controller_macros'
+require_relative 'support/feature_helpers'
 SimpleCov.start
 
 include ActionDispatch::TestProcess
@@ -61,8 +62,7 @@ RSpec.configure do |config|
   config.include Warden::Test::Helpers
   config.include ViewComponent::TestHelpers, type: :component
   config.extend ControllerMacros, :type => :controller
-  config.extend ControllerMacros, :type => :view
-  config.extend ControllerMacros, :type => :feature
+  config.extend FeatureHelpers, :type => :feature
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)

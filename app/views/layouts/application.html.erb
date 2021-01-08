@@ -17,7 +17,7 @@
   <body>
     <%= render Layout::Navbar::Component.new(member: current_member) %>
     <%= render Utils::Alert::Component.new(message: notice, type: 'success') %>
-    <%= render Utils::Alert::Component.new(message: alert, type: 'warning') %>
+    <%= render Utils::Alert::Component.new(message: alert, type: 'alert') %>
     <main>
       <%= yield %>
     </main>
