@@ -36,10 +36,12 @@ RSpec.feature "Books Feature Tests", type: :feature do
       expect(page).to have_text('Remover') 
     end
     it 'visit the new page and create a new book' do
+      category = create(:category)
       visit new_book_path
       fill_in 'Título',	with: 'A feature tested book' 
       fill_in 'Descricão',	with: 'A man that dont like write tests lol' 
       fill_in 'Nome do Autor',	with: 'Unknown'
+      select "#{category.title}", :from => "book_category_id"
       click_button 'Salvar'
       expect(page).to have_text('Livro cadastrado com sucesso.') 
     end

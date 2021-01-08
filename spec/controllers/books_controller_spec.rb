@@ -60,7 +60,8 @@ RSpec.describe BooksController, type: :controller do
   
     describe "POST create" do
       it "Redirect Success" do
-        post :create, params: { book: { title: Faker::Book.name, description: Faker::Books::Lovecraft.paragraph, author_name: Faker::Book.author } }
+        category = create(:category)
+        post :create, params: { book: { title: Faker::Book.name, description: Faker::Books::Lovecraft.paragraph, author_name: Faker::Book.author, category_id: category.id } }
         expect(response).to redirect_to(books_path)
       end
   

@@ -3,5 +3,6 @@ FactoryBot.define do
     title { Faker::Book.title }
     description  { Faker::Books::Lovecraft.paragraph }
     author_name { Faker::Book.author }
+    category { create(:category) }
   end
 end
