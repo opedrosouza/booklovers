@@ -6,6 +6,7 @@ class BooksController < ApplicationController
   def index
     @books_query = Book.ransack(params[:search])
     @books = @books_query.result(distinct: true)
+    @categories = Category.all.select { |category| category.books.count > 0 }
   end
 
   def show; end
