@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :render_unauthorized
   before_action :authenticate_member!
   before_action :set_comment, only: %i[destroy]
   before_action :set_book, only: %i[create destroy]
@@ -41,5 +42,9 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:content)
+  end
+
+  def render_unauthorized
+    current_member.nil? ? redirect_to(request.referrer, alert: 'Você precisa fazer login para comentar.') : true
   end
 end

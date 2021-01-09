@@ -9,12 +9,9 @@
             <p class="card-text"><%= @book.description %></p>
             <p><strong><%= @book.author_name %></strong></p>
           </div>
-          <% if current_admin %>
-            <div class="card-footer">
-              <%= link_to 'Editar', edit_book_path(@book), class: 'btn btn-sm btn-info' %>
-              <%= link_to 'Remover', book_path(@book), method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-sm btn-danger' %>
-            </div>
-          <% end %>
+          <div class="card-footer" id="user-book-actions">
+            <%= render 'book_actions' %>
+          </div>
         </div>
       </div>
       <div id="book-comments" class="col-12 col-md-8 col-lg-6 align-self-start">
