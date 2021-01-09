@@ -23,7 +23,7 @@
 <% if @categories.count > 0%>
   <% @categories.each do |category| %>
     <div class="splide">
-      <h4><%= link_to category[:title], category_path(category[:title]), class: 'text-dark' %></h4>
+      <h4><%= link_to category[:title], category_path(category[:id]), class: 'text-dark' %></h4>
 	    <div class="splide__track">
         <div class="row splide__list">
           <% if category[:books].count > 0 %>

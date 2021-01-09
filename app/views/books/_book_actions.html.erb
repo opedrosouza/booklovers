@@ -1,0 +1,8 @@
+<% if current_admin %>
+  <%= link_to 'Editar', edit_book_path(@book), class: 'btn btn-sm btn-info' %>
+  <%= link_to 'Remover', book_path(@book), method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-sm btn-danger' %>
+<% else %>
+  <%= link_to 'Já li', book_of_users_path({ book_of_user: { book_id: @book.id, status: 'readed' } }), method: :post, remote: true, class: 'btn btn-sm btn-success' %>
+  <%= link_to 'Quero ler', book_of_users_path({ book_of_user: { book_id: @book.id, status: 'to_read' } }), method: :post, remote: true, class: 'btn btn-sm btn-success' %>
+  <%= link_to 'Quero comprar', book_of_users_path({ book_of_user: { book_id: @book.id, status: 'to_shop' } }), method: :post, remote: true, class: 'btn btn-sm btn-success' %>
+<% end %>

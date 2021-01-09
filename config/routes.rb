@@ -30,7 +30,12 @@ Rails.application.routes.draw do
 
   resources :books
   resources :comments, only: %i[create destroy]
+  resources :book_of_users, only: %i[create destroy]
   resources :categories
+  
+  namespace :users do
+    resources :books, only: %i[index]
+  end
 
   root to: 'books#index'
 
